@@ -1,0 +1,144 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.backButton {
+  background: rgba(255, 107, 53, 0.8);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.backButton:hover {
+  background: #ff6b35;
+  transform: translateX(-3px);
+}
+
+.detailContent {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.imageSection {
+  display: flex;
+  align-items: flex-start;
+}
+
+.characterImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #ff6b35;
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+}
+
+.infoSection h1 {
+  margin: 0 0 1.5rem;
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: rgba(255, 107, 53, 0.1);
+  border-left: 3px solid #ff6b35;
+  border-radius: 4px;
+}
+
+.stat strong {
+  color: #ff6b35;
+}
+
+.stat span {
+  color: #fff;
+}
+
+.description,
+.planet {
+  margin-bottom: 1.5rem;
+}
+
+.description h3,
+.planet h3 {
+  color: #ff6b35;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.description p,
+.planet p {
+  color: #ddd;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+.error {
+  background: rgba(255, 0, 0, 0.1);
+  border: 2px solid #ff4444;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.error button {
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  background: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.error button:hover {
+  background: #e55a24;
+}
+
+@media (max-width: 768px) {
+  .detailContent {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .imageSection {
+    justify-content: center;
+  }
+
+  .characterImage {
+    max-width: 250px;
+  }
+
+  .infoSection h1 {
+    font-size: 2rem;
+  }
+}
