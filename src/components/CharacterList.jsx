@@ -7,6 +7,7 @@ function CharacterList({ onSelectCharacter }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [activeCardId, setActiveCardId] = useState(null);
 
   useEffect(() => {
     fetchCharacters();
@@ -56,20 +57,37 @@ function CharacterList({ onSelectCharacter }) {
       </div>
 
       <div className={styles.characterGrid}>
-        {filteredCharacters.map((character) => (
-          <div
-            key={character.id}
-            className={styles.characterCard}
-          >
-            <img
-              src={character.image}
-              alt={character.name}
-              className={styles.characterImage}
-            />
-            <h3>{character.name}</h3>
-            <p className={styles.race}>{character.race}</p>
-          </div>
-        ))}
+        {filteredCharacters.map((character) => {
+          const isActive = activeCardId === character.id;
+          return (
+            <div
+              key={character.id}
+              className={`${styles.characterCard} ${isActive ? styles.active : ''}`}
+              role="button"
+              tabIndex={0}
+              aria-pressed={isActive}
+              onClick={() => {
+                setActiveCardId((prev) => (prev === character.id ? null : character.id));
+                if (onSelectCharacter) onSelectCharacter(character);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActiveCardId((prev) => (prev === character.id ? null : character.id));
+                  if (onSelectCharacter) onSelectCharacter(character);
+                }
+              }}
+            >
+              <img
+                src={character.image}
+                alt={character.name}
+                className={styles.characterImage}
+              />
+              <h3>{character.name}</h3>
+            
+            </div>
+          );
+        })}
       </div>
 
       {filteredCharacters.length === 0 && (

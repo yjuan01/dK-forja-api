@@ -45,6 +45,8 @@
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
+  transition: transform 250ms cubic-bezier(.2,.8,.2,1), box-shadow 250ms ease, border-color 250ms ease;
+  cursor: pointer;
 }
 
 .planetImage {
@@ -55,6 +57,22 @@
   display: block;
   background: rgba(0, 0, 0, 0.2);
   padding: 10px;
+  transition: transform 300ms ease;
+}
+
+.planetCard:hover,
+.planetCard:focus-visible {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.02);
+  border-color: rgba(255, 107, 53, 0.6);
+}
+
+.planetCard:active {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.planetCard:hover .planetImage {
+  transform: scale(1.03);
 }
 
 .planetCard h3 {
